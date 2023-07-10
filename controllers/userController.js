@@ -5,13 +5,14 @@ const userModel = require("../models/userModel");
 module.exports.creation = async function creation(req, res) {
   try {
     // Destructure the request body to get the name, password, and email
-    let { name, email, questionare, age, income } = req.body;
+    let { name, email, questionare, age, income, imageUrl } = req.body;
     // Create a new user in the database with the provided information
     let user = await userModel.create({
       name: name,
       email: email,
       questionare: questionare,
       age: age,
+      imageUrl: imageUrl,
       isAnswered: true,
       income: income,
     });

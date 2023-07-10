@@ -99,17 +99,23 @@ module.exports.getCategoryAmounts = async function getCategoryAmounts(
 ) {
   try {
     let { email } = req.body;
-    const transactions = await transactionModel.find({
+    const user = await userModel.findOne({
       email: email,
     });
+    const transactions = await transactionModel.find({
+      userId: user.id,
+    });
 
-    const categoryAmounts = {};
+    const categoryAmounts = [];
     transactions.forEach((transaction) => {
       const { category, amount } = transaction;
-      if (categoryAmounts.hasOwnProperty(category)) {
-        categoryAmounts[category] += parseFloat(amount);
+      const existingCategory = categoryAmounts.find(
+        (item) => item.category === category
+      );
+      if (existingCategory) {
+        existingCategory.amount += parseFloat(amount);
       } else {
-        categoryAmounts[category] = parseFloat(amount);
+        categoryAmounts.push({ category, amount: parseFloat(amount) });
       }
     });
 
