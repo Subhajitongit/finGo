@@ -71,6 +71,27 @@ module.exports.searchFriends = async function searchFriends(req, res) {
   }
 };
 
+module.exports.searchFriendsEmail = async function searchFriendsEmail(
+  req,
+  res
+) {
+  try {
+    // Destructure the request body to get the name, password, and email
+    let { email } = req.body;
+    let friend = await userModel.findOne({ email: email });
+    // Send a JSON response with a success message, the new user data, and the token
+    res.status(200).json({
+      message: "Succesfully found friend",
+      data: friend,
+    });
+  } catch (err) {
+    // If an error occurs, send a JSON response with the error message
+    res.status(400).json({
+      message: err.message,
+    });
+  }
+};
+
 // Handle get friends
 module.exports.getFriends = async function getFriends(req, res) {
   try {

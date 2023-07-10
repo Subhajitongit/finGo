@@ -20,6 +20,10 @@ const userSchema = mongoose.Schema(
       unique: true,
       validate: [validateEmail, "Please enter a valid email"],
     },
+    imageUrl: {
+      type: String,
+      required: true,
+    },
     friends: {
       type: [],
     },
@@ -40,7 +44,6 @@ const userSchema = mongoose.Schema(
     },
     income: {
       type: String,
-      required: true,
     },
     totalSpending: {
       type: String,
