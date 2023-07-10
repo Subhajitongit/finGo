@@ -18,6 +18,7 @@ module.exports.mccCategories = {
   5531: "Auto and Home Supply Stores",
   6011: "Automated Cash Disburse",
   5542: "Automated Fuel Dispensers",
+  5541: "Service Stations",
   8675: "Automobile Associations",
   5533: "Automotive Parts and Accessories Stores",
   5532: "Automotive Tire Stores",
@@ -246,6 +247,5 @@ module.exports.mccCategories = {
   5698: "Wig and Toupee Stores",
   4829: "Wires, Money Orders",
   5631: "Womens Accessory and Specialty Shops",
-  5621: "Apologies for the misunderstanding. Here is the complete JavaScript object for the given MCC categories and codes",
   5935: "Wrecking and Salvage Yards",
 };
