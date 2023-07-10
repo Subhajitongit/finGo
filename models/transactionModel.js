@@ -15,6 +15,9 @@ const transactionSchema = mongoose.Schema(
     amount: {
       type: String,
     },
+    note: {
+      type: String,
+    },
   },
   { timestamps: true } // Automatically add createdAt and updatedAt fields to documents
 );
