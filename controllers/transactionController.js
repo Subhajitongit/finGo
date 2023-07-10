@@ -53,7 +53,7 @@ module.exports.createTransaction = async function createTransaction(req, res) {
 
     const transaction = await transactionModel.create({
       userId: user.id,
-      category: mccCategories[mcc.toString()] || "miscleneous",
+      category: mccCategories[mcc.toString()] || "Miscellaneous",
       amount: amount,
     });
 
