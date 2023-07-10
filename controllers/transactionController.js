@@ -75,14 +75,19 @@ module.exports.createTransaction = async function createTransaction(req, res) {
 module.exports.getTransactions = async function getTransactions(req, res) {
   try {
     // Destructure the request body to get the name, password, and email
-    let { userId } = req.body;
-    let transaction = await transactionModel
-      .find({ userId: userId })
+    let { email } = req.body;
+    const user = await userModel.findOne({
+      email: email,
+    });
+    const transactions = await transactionModel
+      .find({
+        userId: user.id,
+      })
       .sort({ createdAt: 1 });
     // Send a JSON response with a success message, the new user data, and the token
     res.status(200).json({
       message: "Succesfully fetched transactions",
-      data: transaction,
+      transactions: transactions,
     });
   } catch (err) {
     // If an error occurs, send a JSON response with the error message
