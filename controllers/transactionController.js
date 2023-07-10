@@ -98,9 +98,9 @@ module.exports.getCategoryAmounts = async function getCategoryAmounts(
   res
 ) {
   try {
-    let { userId } = req.body;
+    let { email } = req.body;
     const transactions = await transactionModel.find({
-      userId: userId,
+      email: email,
     });
 
     const categoryAmounts = {};
